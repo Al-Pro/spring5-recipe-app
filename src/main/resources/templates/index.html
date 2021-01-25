@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Application</title>
+</head>
+<body>
+
+<h1>My Recipe!!!</h1>
+
+<table>
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Description</th>
+        <th>Directions</th>
+    </tr>
+</thead>
+    <tbody>
+    <tr th:each="recipe:${recipes}">
+        <td th:text="${recipe?.getId()}"></td>
+        <td th:text="${recipe?.getDescription()}"></td>
+        <td th:text="${recipe?.getDirections()}"></td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
