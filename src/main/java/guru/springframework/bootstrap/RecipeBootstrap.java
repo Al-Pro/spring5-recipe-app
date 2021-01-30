@@ -4,7 +4,6 @@ import guru.springframework.domain.*;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -108,14 +107,14 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         gaucNotes.setRecipe(gaucRecipe);
         gaucNotes.setRecipeNotes(" For a very quick guacamole just take a 1/4 cup of salsa and mix it in with your mashed avocados.");
         gaucRecipe.setNotes(gaucNotes);
-        gaucRecipe.getIngredients().add(new Ingredient("ripe avocados", new BigDecimal(2), eachUom,gaucRecipe));
-        gaucRecipe.getIngredients().add(new Ingredient("Kosher Sault", new BigDecimal(5), teaspoonUom,gaucRecipe));
-        gaucRecipe.getIngredients().add(new Ingredient("fresh Lime Juice", new BigDecimal(2), tablespoonUom,gaucRecipe));
-        gaucRecipe.getIngredients().add(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tablespoonUom,gaucRecipe));
-        gaucRecipe.getIngredients().add(new Ingredient("serrano chilies, stems and seeds removed, minced", new BigDecimal(2), eachUom,gaucRecipe));
-        gaucRecipe.getIngredients().add(new Ingredient("cilantro", new BigDecimal(2), tablespoonUom,gaucRecipe));
-        gaucRecipe.getIngredients().add(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom,gaucRecipe));
-        gaucRecipe.getIngredients().add(new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(5), eachUom,gaucRecipe));
+        gaucRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
+        gaucRecipe.addIngredient(new Ingredient("Kosher Sault", new BigDecimal(5), teaspoonUom));
+        gaucRecipe.addIngredient(new Ingredient("fresh Lime Juice", new BigDecimal(2), tablespoonUom));
+        gaucRecipe.addIngredient(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tablespoonUom));
+        gaucRecipe.addIngredient(new Ingredient("serrano chilies, stems and seeds removed, minced", new BigDecimal(2), eachUom));
+        gaucRecipe.addIngredient(new Ingredient("cilantro", new BigDecimal(2), tablespoonUom));
+        gaucRecipe.addIngredient(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom));
+        gaucRecipe.addIngredient(new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(5), eachUom));
 
         recipes.add(gaucRecipe);
 
@@ -167,14 +166,14 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n");
         tacosNotes.setRecipe(tacosRecipe);
         tacosRecipe.setNotes(tacosNotes);
-        tacosRecipe.getIngredients().add(new Ingredient("Ancho Chili Powder", new BigDecimal(2), tablespoonUom, tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Dried Oregano", new BigDecimal(1), teaspoonUom, tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Dried Cumin", new BigDecimal(1), tablespoonUom, tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Salt", new BigDecimal(5), teaspoonUom, tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Clove of Garlic", new BigDecimal(1), eachUom, tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("finely grated orange zest", new BigDecimal(1), tablespoonUom, tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("fresh-squeezed orange juice", new BigDecimal(3), tablespoonUom, tacosRecipe));
-        tacosRecipe.getIngredients().add(new Ingredient("Olive Oil", new BigDecimal(2), tablespoonUom, tacosRecipe));
+        tacosRecipe.addIngredient(new Ingredient("Ancho Chili Powder", new BigDecimal(2), tablespoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Dried Oregano", new BigDecimal(1), teaspoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Dried Cumin", new BigDecimal(1), tablespoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Salt", new BigDecimal(5), teaspoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Clove of Garlic", new BigDecimal(1), eachUom));
+        tacosRecipe.addIngredient(new Ingredient("finely grated orange zest", new BigDecimal(1), tablespoonUom));
+        tacosRecipe.addIngredient(new Ingredient("fresh-squeezed orange juice", new BigDecimal(3), tablespoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Olive Oil", new BigDecimal(2), tablespoonUom));
 
         recipes.add(tacosRecipe);
 
