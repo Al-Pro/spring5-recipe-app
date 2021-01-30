@@ -4,14 +4,17 @@ import guru.springframework.domain.*;
 import guru.springframework.repositories.CategoryRepository;
 import guru.springframework.repositories.RecipeRepository;
 import guru.springframework.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.*;
 
 @Component
+@Slf4j
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
@@ -24,6 +27,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         recipeRepository.saveAll(getRecipe());
     }
@@ -62,6 +66,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
             throw new RuntimeException("Expected UOM not found");
         }
 
+        log.debug("UoM is being created");
         UnitOfMeasure eachUom = eachUomOptional.get();
         UnitOfMeasure teaspoonUom = teaspoonUomOptional.get();
         UnitOfMeasure tablespoonUom = tablespoonUomOptional.get();
@@ -81,7 +86,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         Category americanCategory = americanCategoryOptional.get();
         Category mexicanCategory = mexicanCategoryOptional.get();
-
+        log.debug("guacomole recipe is being created");
         Recipe gaucRecipe = new Recipe();
         gaucRecipe.setDescription("Perfect Gaucomole");
         gaucRecipe.getCategories().add(americanCategory);
@@ -118,6 +123,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
         recipes.add(gaucRecipe);
 
+        log.debug("tacos recipe is being created");
         Recipe tacosRecipe = new Recipe();
         tacosRecipe.setDescription("Spicy Grilled Chicken Taco");
         tacosRecipe.getCategories().add(mexicanCategory);
